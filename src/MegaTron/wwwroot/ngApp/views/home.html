@@ -1,0 +1,35 @@
+
+<h2>Home</h2>
+
+<div ng-if="controller.cheese.$resolved">
+    <ul>
+        <li ng-repeat="cheese in controller.cheese">
+            {{cheese.id}},{{cheese.name}},{{cheese.smelliness}} (<button ng-click="controller.delete(cheese.id)" class="btn btn-xs">Delete</button>)
+        </li>
+    </ul>
+</div>
+
+<form ng-submit="controller.submit()">
+    <ul>
+        <li ng-repeat="error in controller.validationErrors">
+            {{error}}
+        </li>
+    </ul>
+
+
+    <div class="form-group">
+        <label>Name the Cheese: </label><input class="form-control" ng-model="controller.newCheese.name"/>
+        {{controller.fieldValidation('name')}}
+    </div>
+    <div class="form-group">
+        <label>Is the cheese smelly? </label><input class="form-control" type="number" ng-model="controller.newCheese.smelliness"/>
+ {{controller.fieldValidation('smelliness')}}
+       </div>
+    <div class="form-group">
+        <label>Is it spreadable?</label> <input type="checkbox" ng-model="controller.newCheese.spreadable"/>
+    </div>
+    <button class="btn btn-danger">Submit</button>
+</form>
+
+
+
